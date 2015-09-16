@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>flipswitch</title>
+	<style type="text/css">
+		body {font-family: Arial, sans-serif;}
+		#flipswitch, #switch {
+			border-radius: 5px;
+		}
+		#flipswitch {
+			width: 80px;
+			height: 35px;
+			cursor: pointer;
+			padding: 0 2px;
+			border: 1px solid #dddddd;
+			margin: 120px auto 0;
+		}
+		.switch-off {
+			transition: 1s;
+			background-color: #e9e9e9;
+		}
+		.switch-on {
+			transition: 1s;
+			background-color: #38c !important;
+		}
+		#switch {
+			width: 35px;
+			height: 29px;
+			background-color: #ffffff;
+			border: 1px solid #dddddd;
+			display: inline-block;
+			top: 2px;
+			position: relative;
+			z-index: 2;
+		}
+		.flip-on {
+			transition: .1s;
+			left: 43px;
+		}
+		.flip-off {
+			transition: .1s;
+			left: 0;
+		}
+		#flip-txt {
+			display: inline-block;
+			float: right;
+			position: relative;
+			right: 10px;
+			top: 8px;
+			font-weight: 700;
+			color: #000000;
+		}
+		.txt-left {
+			right: 50px !important;
+			color: #ffffff !important;
+		}
+	</style>
+</head>
+<body>
+	<div id="flipswitch" class="switch-off" onclick="flipswitch.flip();"><span id="switch" class="flip-off"></span><span id="flip-txt">off</span></div>
+	<script type="text/javascript">
+		flipswitch = {
+			ele : document.getElementById('flipswitch'),
+			flipper : document.getElementById('switch'),
+			flipperOrigClass : document.getElementById('switch').className,
+			flipTxt : document.getElementById('flip-txt'),
+			flipState : false,
+			flip : function() {
+				if(this.flipState == false) {
+					this.ele.className = 'switch-on';
+					this.flipper.className = 'flip-on';
+					this.flipTxt.innerHTML = 'on';
+					this.flipTxt.className = 'txt-left';
+					this.flipState = true;
+				}
+				else {
+					this.ele.className = 'switch-off';
+					this.flipper.className = 'flip-off';
+					this.flipTxt.innerHTML = 'off';
+					this.flipTxt.className = '';
+					this.flipState = false;
+				}
+			}
+		}
+	</script>
+</body>
+</html>
